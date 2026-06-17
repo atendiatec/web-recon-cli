@@ -2,18 +2,18 @@ import requests ## Documentaçao https://requests.readthedocs.io/en/latest/user/
 
 def send_requests(method, url, payload):
     if method == "GET":
-        r = requests.get(url)
+        r = requests.get(url, timeout=5)
     elif method == "POST":
-        r = requests.post(url, data=payload)
+        r = requests.post(url, data=payload, timeout=5)
     elif method == "PUT":
-        r = requests.put(url, data=payload)
+        r = requests.put(url, data=payload, timeout=5)
     elif method == "DELETE":
-        r = requests.delete(url)
+        r = requests.delete(url, timeout=5)
     elif method == "OPTIONS":
-        r = requests.options(url)
+        r = requests.options(url, timeout=5)
     elif method == "HEAD":
-        r = requests.head(url)
+        r = requests.head(url, timeout=5)
     else:
         raise ValueError("Invalid HTTP method")
 
-    print(f"Status Code: {r.status_code}", f"URL: {r.url}")
+    return r
