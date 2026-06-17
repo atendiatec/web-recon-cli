@@ -5,6 +5,8 @@ from time import sleep
 from recon.http_client import send_requests ## aqui pega o arquivo http_client.py e importa a função
 import re
 
+from recon.fingerprint import get_server
+
 
 def http_client():
     resultados = []
@@ -31,7 +33,9 @@ def http_client():
 def main():
     resultados = http_client()
     for r in resultados:
-        print(r["url"], r["status_code"])
+        print(r["url"], r["status_code"], get_server(r["headers"]))
+       
 
 if __name__ == "__main__":
     main()
+
