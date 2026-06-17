@@ -1,4 +1,7 @@
-import requests
+
 
 def get_server(headers):
-   return headers.get("server")
+    for nome in headers:                 
+        if nome.lower()=="server":
+            return headers[nome]
+    return None
