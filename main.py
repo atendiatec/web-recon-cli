@@ -2,10 +2,10 @@
 from recon.http_client import send_requests ## aqui pega o arquivo http_client.py e importa a função
 
 
-from recon.fingerprint import get_server
+from recon.fingerprint import get_server, get_powered_by
 
 
-def http_client():
+def buscar_urls():
     resultados = []
     with open("urls.txt", encoding="utf-8", errors="ignore") as f:
         urls = f.read().splitlines()
@@ -28,9 +28,9 @@ def http_client():
     return resultados
 
 def main():
-    resultados = http_client()
+    resultados = buscar_urls()
     for r in resultados:
-        print(r["url"], r["status_code"], get_server(r["headers"]))
+        print(r["url"], r["status_code"], get_server(r["headers"]), get_powered_by (r["headers"]))
        
 
 if __name__ == "__main__":
